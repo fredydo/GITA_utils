@@ -1,11 +1,9 @@
 import os
-import sys
 import glob
 import argparse
 import numpy as np
 from tqdm import tqdm
 
-sys.path.insert(1, os.path.abspath('tools/DisVoice/'))
 from disvoice.glottal import Glottal
 from disvoice.prosody import Prosody
 from disvoice.phonation import Phonation
@@ -44,14 +42,14 @@ def extract_all(wav_dir, output_dir, static=True):
     if os.path.exists(log_file):
         os.remove(log_file)
 
-    safe_extract("Prosody", Prosody(), wav_files, os.path.join(output_dir, "disvoice", "prosody"), log_file, static)
-    safe_extract("Articulation", Articulation(), wav_files, os.path.join(output_dir, "disvoice", "articulation"), log_file, static)
-    safe_extract("Phonation", Phonation(), wav_files, os.path.join(output_dir, "disvoice", "phonation"), log_file, static)
-    safe_extract("Glottal", Glottal(), wav_files, os.path.join(output_dir, "disvoice", "glottal"), log_file, static)
+    safe_extract("Prosody", Prosody(), wav_files, os.path.join(output_dir, "prosody"), log_file, static)
+    safe_extract("Articulation", Articulation(), wav_files, os.path.join(output_dir, "articulation"), log_file, static)
+    safe_extract("Phonation", Phonation(), wav_files, os.path.join(output_dir, "phonation"), log_file, static)
+    safe_extract("Glottal", Glottal(), wav_files, os.path.join(output_dir, "glottal"), log_file, static)
 
     # -- Summary
     if os.path.exists(log_file):
-        with open(log_file) as f:
+        with open(log_file) as f: 
             fails = f.readlines()
         print(f"\n{len(fails)} failures. Check {log_file} for details.")
     else:
@@ -59,8 +57,8 @@ def extract_all(wav_dir, output_dir, static=True):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="DisVoice-based Feature Extraction", formatter_class=argparse.ArgumentDefaultsHelpFormatter)
-    parser.add_argument("--wav-dir", type=str, default="./data/gita/norm_audios/")
-    parser.add_argument("--output-dir", required=True, type=str)
+    parser.add_argument("--wav-dir", type=str, default="audios/")
+    parser.add_argument("--output-dir", type=str, default="features/")
     parser.add_argument("--static", action="store_true", help="Expand features to static form")
     args = parser.parse_args()
 
