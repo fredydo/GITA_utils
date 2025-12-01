@@ -1,0 +1,696 @@
+{
+    "1": {
+        "test": {
+            "C001R_AJZP": 0,
+            "C003_EMAO": 0,
+            "C017_JMLC": 0,
+            "C046_GGC": 0,
+            "P003_MBCB": 1,
+            "P019_EAS": 1,
+            "P044_CHBB": 1
+        },
+        "inner": {
+            "1": {
+                "train": {
+                    "C006_JJHN": 0,
+                    "C007_RSL": 0,
+                    "C011_JOMG": 0,
+                    "C014_MEMT": 0,
+                    "C020_JEG": 0,
+                    "C033R_JJEE": 0,
+                    "C034_ADV": 0,
+                    "C045_LARE": 0,
+                    "C050_BOLR": 0,
+                    "P002_HJTC": 1,
+                    "P011_CAAA": 1,
+                    "P014_ACE": 1,
+                    "P017_RAL": 1,
+                    "P023_JJEV": 1,
+                    "P024_EAAL": 1,
+                    "P029_JFMG": 1,
+                    "P037_CARS": 1,
+                    "P045_JODG": 1
+                },
+                "val": {
+                    "C005_ABV": 0,
+                    "C013_JIHL": 0,
+                    "C019_AEG": 0,
+                    "P006_FAGP": 1,
+                    "P010_EEPC": 1,
+                    "P016_LFLS": 1,
+                    "P036_AVN": 1
+                }
+            },
+            "2": {
+                "train": {
+                    "C005_ABV": 0,
+                    "C011_JOMG": 0,
+                    "C013_JIHL": 0,
+                    "C014_MEMT": 0,
+                    "C019_AEG": 0,
+                    "C020_JEG": 0,
+                    "C033R_JJEE": 0,
+                    "C034_ADV": 0,
+                    "C045_LARE": 0,
+                    "P002_HJTC": 1,
+                    "P006_FAGP": 1,
+                    "P010_EEPC": 1,
+                    "P011_CAAA": 1,
+                    "P014_ACE": 1,
+                    "P016_LFLS": 1,
+                    "P017_RAL": 1,
+                    "P023_JJEV": 1,
+                    "P036_AVN": 1,
+                    "P037_CARS": 1
+                },
+                "val": {
+                    "C006_JJHN": 0,
+                    "C007_RSL": 0,
+                    "C050_BOLR": 0,
+                    "P024_EAAL": 1,
+                    "P029_JFMG": 1,
+                    "P045_JODG": 1
+                }
+            },
+            "3": {
+                "train": {
+                    "C005_ABV": 0,
+                    "C006_JJHN": 0,
+                    "C007_RSL": 0,
+                    "C011_JOMG": 0,
+                    "C013_JIHL": 0,
+                    "C019_AEG": 0,
+                    "C033R_JJEE": 0,
+                    "C034_ADV": 0,
+                    "C050_BOLR": 0,
+                    "P006_FAGP": 1,
+                    "P010_EEPC": 1,
+                    "P014_ACE": 1,
+                    "P016_LFLS": 1,
+                    "P017_RAL": 1,
+                    "P023_JJEV": 1,
+                    "P024_EAAL": 1,
+                    "P029_JFMG": 1,
+                    "P036_AVN": 1,
+                    "P045_JODG": 1
+                },
+                "val": {
+                    "C014_MEMT": 0,
+                    "C020_JEG": 0,
+                    "C045_LARE": 0,
+                    "P002_HJTC": 1,
+                    "P011_CAAA": 1,
+                    "P037_CARS": 1
+                }
+            },
+            "4": {
+                "train": {
+                    "C005_ABV": 0,
+                    "C006_JJHN": 0,
+                    "C007_RSL": 0,
+                    "C013_JIHL": 0,
+                    "C014_MEMT": 0,
+                    "C019_AEG": 0,
+                    "C020_JEG": 0,
+                    "C045_LARE": 0,
+                    "C050_BOLR": 0,
+                    "P002_HJTC": 1,
+                    "P006_FAGP": 1,
+                    "P010_EEPC": 1,
+                    "P011_CAAA": 1,
+                    "P016_LFLS": 1,
+                    "P024_EAAL": 1,
+                    "P029_JFMG": 1,
+                    "P036_AVN": 1,
+                    "P037_CARS": 1,
+                    "P045_JODG": 1
+                },
+                "val": {
+                    "C011_JOMG": 0,
+                    "C033R_JJEE": 0,
+                    "C034_ADV": 0,
+                    "P014_ACE": 1,
+                    "P017_RAL": 1,
+                    "P023_JJEV": 1
+                }
+            }
+        }
+    },
+    "2": {
+        "test": {
+            "C005_ABV": 0,
+            "C020_JEG": 0,
+            "C050_BOLR": 0,
+            "P002_HJTC": 1,
+            "P017_RAL": 1,
+            "P029_JFMG": 1,
+            "P045_JODG": 1
+        },
+        "inner": {
+            "1": {
+                "train": {
+                    "C001R_AJZP": 0,
+                    "C006_JJHN": 0,
+                    "C007_RSL": 0,
+                    "C014_MEMT": 0,
+                    "C017_JMLC": 0,
+                    "C019_AEG": 0,
+                    "C034_ADV": 0,
+                    "C045_LARE": 0,
+                    "C046_GGC": 0,
+                    "P010_EEPC": 1,
+                    "P011_CAAA": 1,
+                    "P014_ACE": 1,
+                    "P019_EAS": 1,
+                    "P023_JJEV": 1,
+                    "P024_EAAL": 1,
+                    "P036_AVN": 1,
+                    "P037_CARS": 1,
+                    "P044_CHBB": 1
+                },
+                "val": {
+                    "C003_EMAO": 0,
+                    "C011_JOMG": 0,
+                    "C013_JIHL": 0,
+                    "C033R_JJEE": 0,
+                    "P003_MBCB": 1,
+                    "P006_FAGP": 1,
+                    "P016_LFLS": 1
+                }
+            },
+            "2": {
+                "train": {
+                    "C003_EMAO": 0,
+                    "C006_JJHN": 0,
+                    "C011_JOMG": 0,
+                    "C013_JIHL": 0,
+                    "C014_MEMT": 0,
+                    "C017_JMLC": 0,
+                    "C019_AEG": 0,
+                    "C033R_JJEE": 0,
+                    "C045_LARE": 0,
+                    "C046_GGC": 0,
+                    "P003_MBCB": 1,
+                    "P006_FAGP": 1,
+                    "P010_EEPC": 1,
+                    "P011_CAAA": 1,
+                    "P014_ACE": 1,
+                    "P016_LFLS": 1,
+                    "P019_EAS": 1,
+                    "P023_JJEV": 1,
+                    "P036_AVN": 1
+                },
+                "val": {
+                    "C001R_AJZP": 0,
+                    "C007_RSL": 0,
+                    "C034_ADV": 0,
+                    "P024_EAAL": 1,
+                    "P037_CARS": 1,
+                    "P044_CHBB": 1
+                }
+            },
+            "3": {
+                "train": {
+                    "C001R_AJZP": 0,
+                    "C003_EMAO": 0,
+                    "C006_JJHN": 0,
+                    "C007_RSL": 0,
+                    "C011_JOMG": 0,
+                    "C013_JIHL": 0,
+                    "C019_AEG": 0,
+                    "C033R_JJEE": 0,
+                    "C034_ADV": 0,
+                    "C045_LARE": 0,
+                    "P003_MBCB": 1,
+                    "P006_FAGP": 1,
+                    "P010_EEPC": 1,
+                    "P011_CAAA": 1,
+                    "P016_LFLS": 1,
+                    "P019_EAS": 1,
+                    "P024_EAAL": 1,
+                    "P037_CARS": 1,
+                    "P044_CHBB": 1
+                },
+                "val": {
+                    "C014_MEMT": 0,
+                    "C017_JMLC": 0,
+                    "C046_GGC": 0,
+                    "P014_ACE": 1,
+                    "P023_JJEV": 1,
+                    "P036_AVN": 1
+                }
+            },
+            "4": {
+                "train": {
+                    "C001R_AJZP": 0,
+                    "C003_EMAO": 0,
+                    "C007_RSL": 0,
+                    "C011_JOMG": 0,
+                    "C013_JIHL": 0,
+                    "C014_MEMT": 0,
+                    "C017_JMLC": 0,
+                    "C033R_JJEE": 0,
+                    "C034_ADV": 0,
+                    "C046_GGC": 0,
+                    "P003_MBCB": 1,
+                    "P006_FAGP": 1,
+                    "P014_ACE": 1,
+                    "P016_LFLS": 1,
+                    "P023_JJEV": 1,
+                    "P024_EAAL": 1,
+                    "P036_AVN": 1,
+                    "P037_CARS": 1,
+                    "P044_CHBB": 1
+                },
+                "val": {
+                    "C006_JJHN": 0,
+                    "C019_AEG": 0,
+                    "C045_LARE": 0,
+                    "P010_EEPC": 1,
+                    "P011_CAAA": 1,
+                    "P019_EAS": 1
+                }
+            }
+        }
+    },
+    "3": {
+        "test": {
+            "C013_JIHL": 0,
+            "C014_MEMT": 0,
+            "C033R_JJEE": 0,
+            "P006_FAGP": 1,
+            "P011_CAAA": 1,
+            "P037_CARS": 1
+        },
+        "inner": {
+            "1": {
+                "train": {
+                    "C001R_AJZP": 0,
+                    "C003_EMAO": 0,
+                    "C007_RSL": 0,
+                    "C011_JOMG": 0,
+                    "C017_JMLC": 0,
+                    "C020_JEG": 0,
+                    "C045_LARE": 0,
+                    "C046_GGC": 0,
+                    "C050_BOLR": 0,
+                    "P002_HJTC": 1,
+                    "P003_MBCB": 1,
+                    "P016_LFLS": 1,
+                    "P017_RAL": 1,
+                    "P019_EAS": 1,
+                    "P023_JJEV": 1,
+                    "P029_JFMG": 1,
+                    "P036_AVN": 1,
+                    "P044_CHBB": 1,
+                    "P045_JODG": 1
+                },
+                "val": {
+                    "C005_ABV": 0,
+                    "C006_JJHN": 0,
+                    "C019_AEG": 0,
+                    "C034_ADV": 0,
+                    "P010_EEPC": 1,
+                    "P014_ACE": 1,
+                    "P024_EAAL": 1
+                }
+            },
+            "2": {
+                "train": {
+                    "C005_ABV": 0,
+                    "C006_JJHN": 0,
+                    "C007_RSL": 0,
+                    "C017_JMLC": 0,
+                    "C019_AEG": 0,
+                    "C020_JEG": 0,
+                    "C034_ADV": 0,
+                    "C045_LARE": 0,
+                    "C046_GGC": 0,
+                    "C050_BOLR": 0,
+                    "P003_MBCB": 1,
+                    "P010_EEPC": 1,
+                    "P014_ACE": 1,
+                    "P016_LFLS": 1,
+                    "P017_RAL": 1,
+                    "P019_EAS": 1,
+                    "P024_EAAL": 1,
+                    "P036_AVN": 1,
+                    "P045_JODG": 1
+                },
+                "val": {
+                    "C001R_AJZP": 0,
+                    "C003_EMAO": 0,
+                    "C011_JOMG": 0,
+                    "P002_HJTC": 1,
+                    "P023_JJEV": 1,
+                    "P029_JFMG": 1,
+                    "P044_CHBB": 1
+                }
+            },
+            "3": {
+                "train": {
+                    "C001R_AJZP": 0,
+                    "C003_EMAO": 0,
+                    "C005_ABV": 0,
+                    "C006_JJHN": 0,
+                    "C007_RSL": 0,
+                    "C011_JOMG": 0,
+                    "C019_AEG": 0,
+                    "C020_JEG": 0,
+                    "C034_ADV": 0,
+                    "C050_BOLR": 0,
+                    "P002_HJTC": 1,
+                    "P010_EEPC": 1,
+                    "P014_ACE": 1,
+                    "P017_RAL": 1,
+                    "P019_EAS": 1,
+                    "P023_JJEV": 1,
+                    "P024_EAAL": 1,
+                    "P029_JFMG": 1,
+                    "P044_CHBB": 1,
+                    "P045_JODG": 1
+                },
+                "val": {
+                    "C017_JMLC": 0,
+                    "C045_LARE": 0,
+                    "C046_GGC": 0,
+                    "P003_MBCB": 1,
+                    "P016_LFLS": 1,
+                    "P036_AVN": 1
+                }
+            },
+            "4": {
+                "train": {
+                    "C001R_AJZP": 0,
+                    "C003_EMAO": 0,
+                    "C005_ABV": 0,
+                    "C006_JJHN": 0,
+                    "C011_JOMG": 0,
+                    "C017_JMLC": 0,
+                    "C019_AEG": 0,
+                    "C034_ADV": 0,
+                    "C045_LARE": 0,
+                    "C046_GGC": 0,
+                    "P002_HJTC": 1,
+                    "P003_MBCB": 1,
+                    "P010_EEPC": 1,
+                    "P014_ACE": 1,
+                    "P016_LFLS": 1,
+                    "P023_JJEV": 1,
+                    "P024_EAAL": 1,
+                    "P029_JFMG": 1,
+                    "P036_AVN": 1,
+                    "P044_CHBB": 1
+                },
+                "val": {
+                    "C007_RSL": 0,
+                    "C020_JEG": 0,
+                    "C050_BOLR": 0,
+                    "P017_RAL": 1,
+                    "P019_EAS": 1,
+                    "P045_JODG": 1
+                }
+            }
+        }
+    },
+    "4": {
+        "test": {
+            "C011_JOMG": 0,
+            "C034_ADV": 0,
+            "C045_LARE": 0,
+            "P014_ACE": 1,
+            "P016_LFLS": 1,
+            "P036_AVN": 1
+        },
+        "inner": {
+            "1": {
+                "train": {
+                    "C003_EMAO": 0,
+                    "C005_ABV": 0,
+                    "C006_JJHN": 0,
+                    "C007_RSL": 0,
+                    "C017_JMLC": 0,
+                    "C019_AEG": 0,
+                    "C033R_JJEE": 0,
+                    "C046_GGC": 0,
+                    "C050_BOLR": 0,
+                    "P002_HJTC": 1,
+                    "P010_EEPC": 1,
+                    "P011_CAAA": 1,
+                    "P017_RAL": 1,
+                    "P019_EAS": 1,
+                    "P024_EAAL": 1,
+                    "P029_JFMG": 1,
+                    "P037_CARS": 1,
+                    "P044_CHBB": 1,
+                    "P045_JODG": 1
+                },
+                "val": {
+                    "C001R_AJZP": 0,
+                    "C013_JIHL": 0,
+                    "C014_MEMT": 0,
+                    "C020_JEG": 0,
+                    "P003_MBCB": 1,
+                    "P006_FAGP": 1,
+                    "P023_JJEV": 1
+                }
+            },
+            "2": {
+                "train": {
+                    "C001R_AJZP": 0,
+                    "C006_JJHN": 0,
+                    "C007_RSL": 0,
+                    "C013_JIHL": 0,
+                    "C014_MEMT": 0,
+                    "C017_JMLC": 0,
+                    "C019_AEG": 0,
+                    "C020_JEG": 0,
+                    "C046_GGC": 0,
+                    "C050_BOLR": 0,
+                    "P003_MBCB": 1,
+                    "P006_FAGP": 1,
+                    "P017_RAL": 1,
+                    "P019_EAS": 1,
+                    "P023_JJEV": 1,
+                    "P029_JFMG": 1,
+                    "P037_CARS": 1,
+                    "P044_CHBB": 1,
+                    "P045_JODG": 1
+                },
+                "val": {
+                    "C003_EMAO": 0,
+                    "C005_ABV": 0,
+                    "C033R_JJEE": 0,
+                    "P002_HJTC": 1,
+                    "P010_EEPC": 1,
+                    "P011_CAAA": 1,
+                    "P024_EAAL": 1
+                }
+            },
+            "3": {
+                "train": {
+                    "C001R_AJZP": 0,
+                    "C003_EMAO": 0,
+                    "C005_ABV": 0,
+                    "C006_JJHN": 0,
+                    "C013_JIHL": 0,
+                    "C014_MEMT": 0,
+                    "C017_JMLC": 0,
+                    "C020_JEG": 0,
+                    "C033R_JJEE": 0,
+                    "C050_BOLR": 0,
+                    "P002_HJTC": 1,
+                    "P003_MBCB": 1,
+                    "P006_FAGP": 1,
+                    "P010_EEPC": 1,
+                    "P011_CAAA": 1,
+                    "P017_RAL": 1,
+                    "P019_EAS": 1,
+                    "P023_JJEV": 1,
+                    "P024_EAAL": 1,
+                    "P044_CHBB": 1
+                },
+                "val": {
+                    "C007_RSL": 0,
+                    "C019_AEG": 0,
+                    "C046_GGC": 0,
+                    "P029_JFMG": 1,
+                    "P037_CARS": 1,
+                    "P045_JODG": 1
+                }
+            },
+            "4": {
+                "train": {
+                    "C001R_AJZP": 0,
+                    "C003_EMAO": 0,
+                    "C005_ABV": 0,
+                    "C007_RSL": 0,
+                    "C013_JIHL": 0,
+                    "C014_MEMT": 0,
+                    "C019_AEG": 0,
+                    "C020_JEG": 0,
+                    "C033R_JJEE": 0,
+                    "C046_GGC": 0,
+                    "P002_HJTC": 1,
+                    "P003_MBCB": 1,
+                    "P006_FAGP": 1,
+                    "P010_EEPC": 1,
+                    "P011_CAAA": 1,
+                    "P023_JJEV": 1,
+                    "P024_EAAL": 1,
+                    "P029_JFMG": 1,
+                    "P037_CARS": 1,
+                    "P045_JODG": 1
+                },
+                "val": {
+                    "C006_JJHN": 0,
+                    "C017_JMLC": 0,
+                    "C050_BOLR": 0,
+                    "P017_RAL": 1,
+                    "P019_EAS": 1,
+                    "P044_CHBB": 1
+                }
+            }
+        }
+    },
+    "5": {
+        "test": {
+            "C006_JJHN": 0,
+            "C007_RSL": 0,
+            "C019_AEG": 0,
+            "P010_EEPC": 1,
+            "P023_JJEV": 1,
+            "P024_EAAL": 1
+        },
+        "inner": {
+            "1": {
+                "train": {
+                    "C001R_AJZP": 0,
+                    "C005_ABV": 0,
+                    "C013_JIHL": 0,
+                    "C014_MEMT": 0,
+                    "C017_JMLC": 0,
+                    "C020_JEG": 0,
+                    "C033R_JJEE": 0,
+                    "C045_LARE": 0,
+                    "C046_GGC": 0,
+                    "P002_HJTC": 1,
+                    "P003_MBCB": 1,
+                    "P011_CAAA": 1,
+                    "P014_ACE": 1,
+                    "P016_LFLS": 1,
+                    "P017_RAL": 1,
+                    "P019_EAS": 1,
+                    "P036_AVN": 1,
+                    "P037_CARS": 1,
+                    "P045_JODG": 1
+                },
+                "val": {
+                    "C003_EMAO": 0,
+                    "C011_JOMG": 0,
+                    "C034_ADV": 0,
+                    "C050_BOLR": 0,
+                    "P006_FAGP": 1,
+                    "P029_JFMG": 1,
+                    "P044_CHBB": 1
+                }
+            },
+            "2": {
+                "train": {
+                    "C003_EMAO": 0,
+                    "C005_ABV": 0,
+                    "C011_JOMG": 0,
+                    "C013_JIHL": 0,
+                    "C014_MEMT": 0,
+                    "C017_JMLC": 0,
+                    "C033R_JJEE": 0,
+                    "C034_ADV": 0,
+                    "C045_LARE": 0,
+                    "C050_BOLR": 0,
+                    "P003_MBCB": 1,
+                    "P006_FAGP": 1,
+                    "P011_CAAA": 1,
+                    "P014_ACE": 1,
+                    "P016_LFLS": 1,
+                    "P029_JFMG": 1,
+                    "P036_AVN": 1,
+                    "P044_CHBB": 1,
+                    "P045_JODG": 1
+                },
+                "val": {
+                    "C001R_AJZP": 0,
+                    "C020_JEG": 0,
+                    "C046_GGC": 0,
+                    "P002_HJTC": 1,
+                    "P017_RAL": 1,
+                    "P019_EAS": 1,
+                    "P037_CARS": 1
+                }
+            },
+            "3": {
+                "train": {
+                    "C001R_AJZP": 0,
+                    "C003_EMAO": 0,
+                    "C011_JOMG": 0,
+                    "C014_MEMT": 0,
+                    "C017_JMLC": 0,
+                    "C020_JEG": 0,
+                    "C034_ADV": 0,
+                    "C045_LARE": 0,
+                    "C046_GGC": 0,
+                    "C050_BOLR": 0,
+                    "P002_HJTC": 1,
+                    "P006_FAGP": 1,
+                    "P011_CAAA": 1,
+                    "P016_LFLS": 1,
+                    "P017_RAL": 1,
+                    "P019_EAS": 1,
+                    "P029_JFMG": 1,
+                    "P037_CARS": 1,
+                    "P044_CHBB": 1,
+                    "P045_JODG": 1
+                },
+                "val": {
+                    "C005_ABV": 0,
+                    "C013_JIHL": 0,
+                    "C033R_JJEE": 0,
+                    "P003_MBCB": 1,
+                    "P014_ACE": 1,
+                    "P036_AVN": 1
+                }
+            },
+            "4": {
+                "train": {
+                    "C001R_AJZP": 0,
+                    "C003_EMAO": 0,
+                    "C005_ABV": 0,
+                    "C011_JOMG": 0,
+                    "C013_JIHL": 0,
+                    "C020_JEG": 0,
+                    "C033R_JJEE": 0,
+                    "C034_ADV": 0,
+                    "C046_GGC": 0,
+                    "C050_BOLR": 0,
+                    "P002_HJTC": 1,
+                    "P003_MBCB": 1,
+                    "P006_FAGP": 1,
+                    "P014_ACE": 1,
+                    "P017_RAL": 1,
+                    "P019_EAS": 1,
+                    "P029_JFMG": 1,
+                    "P036_AVN": 1,
+                    "P037_CARS": 1,
+                    "P044_CHBB": 1
+                },
+                "val": {
+                    "C014_MEMT": 0,
+                    "C017_JMLC": 0,
+                    "C045_LARE": 0,
+                    "P011_CAAA": 1,
+                    "P016_LFLS": 1,
+                    "P045_JODG": 1
+                }
+            }
+        }
+    }
+}

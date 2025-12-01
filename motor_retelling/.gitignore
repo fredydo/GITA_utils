@@ -1,0 +1,7 @@
+MOTOR_LECTURA
+MOTOR_LIBRE
+results*
+venv
+*.pdf
+*.png
+*.pptx
