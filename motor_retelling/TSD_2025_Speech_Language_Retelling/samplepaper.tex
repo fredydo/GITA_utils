@@ -1,0 +1,669 @@
+% This is samplepaper.tex, a sample chapter demonstrating the
+% LLNCS macro package for Springer Computer Science proceedings;
+% Version 2.21 of 2022/01/12
+%
+\documentclass[runningheads]{llncs}
+%
+\usepackage[T1]{fontenc}
+% T1 fonts will be used to generate the final print and online PDFs,
+% so please use T1 fonts in your manuscript whenever possible.
+% Other font encondings may result in incorrect characters.
+%
+\usepackage{graphicx}
+\usepackage{comment}
+\usepackage{booktabs}
+\usepackage{amsmath}
+\usepackage{booktabs}
+\usepackage{threeparttable}
+\usepackage{array}
+\usepackage{float}
+\usepackage{multirow}
+
+% \makeatletter
+% \renewcommand\subsubsection{\@startsection{subsubsection}{3}{\z@}%
+%   {-18\p@ \@plus -4\p@ \@minus -4\p@}%
+%   {6\p@ \@plus 4\p@ \@minus 4\p@}%
+%   {\normalfont\normalsize\bfseries}}
+% \makeatother
+
+
+% Used for displaying a sample figure. If possible, figure files should
+% be included in EPS format.
+%
+% If you use the hyperref package, please uncomment the following two lines
+% to display URLs in blue roman font according to Springer's eBook style:
+%\usepackage{color}
+%\renewcommand\UrlFont{\color{blue}\rmfamily}
+%\urlstyle{rm}
+%
+\begin{document}
+%
+%\title{Multimodal Speech and Language Modeling for Parkinson’s Disease and MCI Detection}
+
+\title{Verb Motility Dynamics Reveals Cognitive Impairment in Parkinson’s Disease: A Speech-Language Fusion Approach}
+
+%
+%\titlerunning{Abbreviated paper title}
+% If the paper title is too long for the running head, you can set
+% an abbreviated paper title here
+%
+\titlerunning{Verb Motility Dynamics Reveals PD-MCI}
+
+\author{
+Jhon Fredy Mercado-Agudelo\inst{1}\thanks{These authors contributed equally.}\orcidID{0009-0000-4867-4352}
+\and
+Daniel Escobar-Grisales\inst{1}\textsuperscript{*}\orcidID{0000-0002-3257-0134}
+\and
+Cristian David Ríos-Urrego\inst{1}\orcidID{0000-0003-0174-1452}
+\and
+Adolfo M. García\inst{3}\orcidID{0000-0002-6936-0114}
+\and
+Yamile Bocanegra\inst{3}\orcidID{0000-0003-3064-2509}
+\and
+Leonardo Moreno\inst{4}
+\and
+Elmar Nöth\inst{5}\orcidID{0000-0002-3396-555X}
+\and
+Juan Rafael Orozco-Arroyave\inst{1,5}\orcidID{0000-1111-2222-3333}
+}
+
+
+
+\institute{GITA Lab, Faculty of Engineering, Universidad de Antioquia, Medellín, Colombia
+\and
+CNC, Universidad de San Andrés, Argentina
+\and
+GNA Lab, Universidad de Antioquia, Colombia
+\and
+Hospital Pablo Tobón Uribe, Colombia
+\and
+LME Lab, University of Erlangen-Nuremberg, Erlangen, Germany}
+
+\authorrunning{J. F. Mercado Agudelo et al.}
+
+% First names are abbreviated in the running head.
+% If there are more than two authors, 'et al.' is used.
+%
+%
+\maketitle              % typeset the header of the contribution
+%
+\setcounter{secnumdepth}{3}
+\begin{abstract}
+Parkinson’s disease (PD) and mild cognitive impairment (MCI) affect both motor and cognitive linguistic abilities. This work proposes a multimodal framework for detecting PD 
+and MCI from naturalistic retelling tasks by combining acoustic and linguistic features. Speech features capture prosodic, articulatory, and phonemic properties linked to 
+hypokinetic dysarthria, while language features model lexical,syntactic, and semantic complexity, including a novel motility-based representation that quantifies the use of 
+action-related verbs.
+
+Each modality is independently evaluated and combined following 
+early and late fusion strategies based on support vector 
+machines. The results confirm speech features as good biomarkers
+to model PD and MCI, and show the motility-based language 
+features improve specificity, particularly in distinguishing 
+cognitive decline in Parkinson's patients, i.e.,
+PD patients with MCI vs. patients without MCI. 
+Fusion strategies further improve classification performance, 
+confirming the complementarity of speech and language. 
+These findings support the use of retelling-based multimodal 
+analyses as promising tools for early and non-invasive 
+screening of neurodegenerative conditions.
+
+\keywords{Parkinson’s disease \and Mild cognitive impairment \and Multimodal analysis \and Speech and language modeling \and Support vector machine \and Feature fusion.}
+\end{abstract}
+%
+%
+%
+\section{Introduction}
+
+Parkinson's disease (PD) is the second most prevalent neurodegenerative disorder worldwide after Alzheimer's disease~\cite{marinus2018risk}. PD is characterized by different 
+motor and non-motor symptoms. Motor alterations include tremors, 
+bradykinesia, and rigidity. Non-motor signs include 
+cognitive decline, sleep disorders, and others. 
+The manifestation and progression of these symptoms vary among
+individuals. One of the main challenges in PD is its diagnosis,
+which is expensive and requires neurologists experts to screen
+the patient. Speech and language biosignals emerged as promising 
+biomarkers thanks to their non-invasive and cost-effective nature, 
+and also because they easily enable remote screenings. 
+
+Speech impairments suffered by PD patients are typically grouped
+and called hypokinetic dysarthria. It affects different 
+dimensions of speech production, including respiration, 
+phonation, articulation, and prosody~\cite{vasquez2018towards,orozco2020current}. 
+Classical approaches include measures like pitch, jitter, 
+shimmer, formant frequencies, and Mel Frequency Cepstral 
+Coefficients (MFCCs)~\cite{mekyska2016perceptual}. 
+Other studies have focused on representations that aim to 
+model specific speech dimensions~\cite{vasquez2018towards}. In~\cite{oliveira2025pilot}, the authors used different 
+feature sets to model phonation, prosody, and articulation. 
+These features were used to estimate the PD severity based on diadochokinetic (DDK) tasks performed by PD patients of 
+the PC-GITA database~\cite{orozco2014new}. 
+Patients were categorized into four severity levels 
+(Normal, Slight, Mild, Moderate) based on the MDS-UPDRS-III 
+score. 
+The authors reported an overall accuracy of 72\% in 
+discriminating the four severity levels. 
+Other works have considered Deep Learning (DL) approaches 
+to analyze PD using speech signals. In~\cite{costantini2023artificial}, the authors considered 
+246 Italian speakers (160 with PD) who were asked to produce 
+the sustained vowel /e/. In the study, traditional methods 
+were compared with methods based on DL. The traditional 
+approach considered hand-crafted features like MFCCs, jitter, 
+shimmer, and formant frequencies, and achieved accuracies 
+of up to 82\%. The DL approach was based on Mel-spectrograms 
+as input to a CNN and achieved accuracies of up to 70\%. 
+Contrary to the typically reported in the literature, 
+the hand-crafted features outperformed the DL approach. 
+This is likely because the authors did not incorporate data
+augmentation or transfer learning methods to improve
+data size and therefore better optimize their models.
+In~\cite{wang2024using}, the authors used classical feature 
+sets and autoencoders. These features were used to 
+classify between PD patients and HCs using sustained 
+vowels in a Chinese dataset. The authors reported an 
+accuracy of 85\% and indicated the autoencoders-based features
+as the most discriminant ones. 
+In \cite{garcia2021cognitive}, the authors considered a 
+corpus composed of 80 Spanish-speaking subjects 
+(40 PD patients) and extracted prosody, articulation, 
+and phonemic identifiability features to classify between 
+PD patients and HCs. The fusion of all features yielded 
+an accuracy of up to 84\%, where articulation features 
+contributed the most to discriminate between PD patients 
+and HCs. In addition, the authors classified between 
+PD patients with and without MCI and found that phonemic 
+identifiability features effectively discriminate between these
+two subgroups. 
+Finally, a recent study proposed the use of foundation 
+models, such as Wav2vec and WavLM, to model PD. In~\cite{escobar2023automatic}, the authors explored four characterization strategies: three pathology-oriented representations (articulation, prosody, and phonemic 
+identifiability) and one non-pathology-oriented representation
+based on the Wav2Vec 2.0 model. 
+Accuracies of up to 81\% were reported when pathology-oriented
+representations were incorporated, outperforming the Wav2vec 2.0 results.
+
+On the other hand, although language production has been 
+less studied in the context of PD, some works have reported 
+different language patterns associated with this disease. 
+PD is characterized by various lexico-semantic deficits, 
+including reduced verbal fluency, alterations in the use 
+and production of motor verbs (i.e., verbs denoting bodily 
+movements), and deficits related to learning new verbs~\cite{eyigoz2020discourse,liu2015characteristics}. In~\cite{eyigoz2020discourse}, three corpora in different 
+languages were considered: Spanish~\cite{orozco2014new}, German~\cite{skodda2011intonation}, and Czech~\cite{rusz2013imprecise}. The authors considered
+morphological tagging and graphs to model the three corpora 
+and reported accuracies of up to 80\% when classifying bertween
+PD and HC subjects.
+In~\cite{garcia2022detecting}, the authors used the same 
+database as in~\cite{garcia2021cognitive} and focused 
+on manual transcriptions of the retelling tasks. 
+They proposed the Proximity-to-Reference Semantic Field (P-RSF) characterization to capture the weight of action and 
+non-action concepts across retold texts. 
+Accuracies of up to 85\% were obtained in the classification 
+of PD patients and HC  when analyzing the retelling of 
+an action-based story. The P-RSF score showed a significant 
+difference between PD patients with MCI vs. HC. 
+However, when comparing P-RSF scores between PD patients 
+with and without MCI, no significant difference were 
+observed. DL approaches have also been explored in 
+language analysis. Representations based on word-embeddings, 
+such as Word2vec or Bidirectional Encoder Representations 
+from Transformers (BERT), have been used to analyze language
+abnormalities in PD. Although these general representations 
+were not explicitly developed for mapping PD traits, 
+some of them have demonstrated correlations with certain 
+cognitive tests and achieved accuracies of up to 72\% in 
+classifying PD patients and 
+HCs~\cite{jessiman2018language,perez2019natural}. In~\cite{escobar2023automatic}, the authors computed language
+representations based on BETO (a Spanish version of BERT~\cite{canete2023spanish}) and reported the best 
+results with a Verbs+CNN representation. 
+This finding aligns with the literature, where 
+different non-automatic approaches have reported that 
+PD patients show difficulties processing verbs compared 
+to other grammatical units, such as 
+nouns~\cite{abrevaya2016road,garcia2022neurodegenerative}.
+%
+Previous studies have shown impaired verb production in PD
+patients compared to HCs, particularly in 
+the production of verbs that denote action or movement. 
+However, the studies have focused on the frequency of 
+such verbs in discourse or on their semantic proximity 
+to reference action-related fields. 
+This paper aims to analyze the temporal evolution of 
+the motor content in verbs produced during narrative 
+retelling to assess whether the dynamic patterns in 
+the motor content of verbs serve as a sensitive 
+linguistic biomarker of alterations associated with PD. 
+%
+This paper considers the story with high-action content 
+included in~\cite{garcia2021cognitive}.
+Our analysis includes both speech and language modalities: we 
+extract three well-established speech representations as 
+well as a new language-based feature, which aims to capture 
+the dynamics of motor content in the verbs produced during 
+the retelling. We evaluated all representations in four
+classification scenarios: (i) PD vs. HC, (ii) PD with MCI 
+(PD-MCI) vs. HC, (iii) PD without MCI (PD-nMCI) vs. HC, and 
+(iv) PD-MCI vs. PD-nMCI. 
+While speech-based features yielded good results, in line 
+with previous literature, the proposed motility-based
+characterization improved performance in scenarios 
+involving cognitive status. 
+These findings suggest the potential of motor-content 
+dynamics to capture subtle linguistic alterations associated 
+with cognitive impairment in PD.
+
+\section{Material and methods}
+
+\subsection{Data}
+
+We used the same dataset referenced in~\cite{garcia2021cognitive} and~\cite{garcia2022detecting}, which includes speech recordings from 40 HC subjects and 40 early-stage Spanish-speaking PD patients, 16 PD-MCI and 24 PD-nMCI. 
+The dataset has two subsets of HCs matched matched by 
+gender and age with respect to their corresponding 
+subsets of PD patients. 
+Although the corpus includes two stories, we focused 
+exclusively on the retelling of the high motor content 
+story. This enables us to jointly model speech and 
+language~\cite{garcia2022detecting}. 
+Classification of PD-MCI and PD-nMCI was developed based 
+on their MoCA scores and their level of functional 
+independence. Original recordings were sampled at 44.1 kHz. 
+For this study, we applied the channel normalization 
+procedure described in~\cite{arias2021multi} and the 
+recordings were down sampled to 16 kHz. 
+The demographic and clinical characteristics of the 
+participants are summarized in Table~\ref{tab:demographics}.
+
+\begin{table}[th!!]
+\centering
+\caption{Clinical and demographic information. (F/M): Female/Male. UPDRS-III: Unified Parkinson’s Disease Rating Scale, section III, H\&Y: Hoehn \& Yahr scale, MoCA: Montreal Cognitive Assessment. MCI screening followed level-1 criteria of the Movement Disorder Society Task Force~\cite{litvan2012diagnostic}.}
+\label{tab:demographics}
+\resizebox{0.9\linewidth}{!}{
+\begin{tabular}{lccccc}
+\bottomrule
+\multicolumn{1}{c}{} &
+  \begin{tabular}[c]{@{}c@{}}\textbf{PD patients} \\ (n = 40)\end{tabular} & &
+  \begin{tabular}[c]{@{}c@{}}\textbf{HC subjetcs} \\ (n = 40)\end{tabular} & &
+  \begin{tabular}[c]{@{}c@{}}\textbf{PD vs. HCs}\end{tabular} \\ \hline
+\multicolumn{6}{l}{\textbf{Sociodemographic variables}} \\ \hline
+Sex (F/M)             & 15/25                              & & 15/25       & & --                  \\
+Age (years)           & 62.3$\pm$\phantom{0}9.3            & &61.9$\pm$7.3 & & 0.84*               \\
+Education (years)     & 12.2$\pm$\phantom{0}5.0            & &12.8$\pm$4.6 & & 0.63*               \\ \hline
+\multicolumn{6}{l}{\textbf{Clinical variables}} \\ \hline
+Years since diagnosis & \phantom{0}5.7$\pm$\phantom{0}3.7  & &--           & & --                  \\
+UPDRS-III             & 31.0$\pm$12.5                      & &--           & & --                  \\
+Hoehn \& Yahr stage   & \phantom{0}2.1$\pm$\phantom{0}0.3  & &--           & & --                  \\
+MoCA                  & 24.8$\pm$\phantom{0}3.0            & &26.7$\pm$1.6 & & $< 0.01$*            \\
+wMCI/nMCI             & 16/24                              & & --          & & --                   \\ \bottomrule
+\end{tabular}
+}
+\begin{tablenotes}
+\footnotesize
+\item * $p-$values computed using Mann–Whitney U tests. 
+\end{tablenotes}
+\end{table}
+
+
+
+\subsection{Methodology} \label{subsec:overview}
+
+The general methodology addressed in this work is shown 
+in Figure~\ref{fig:methodology}. 
+We process speech recordings from a retelling task to 
+extract acoustic and linguistic information. 
+These modalities are first modeled independently and then 
+combined using fusion strategies. The methodology involves 
+three main stages: speech modeling using prosodic, 
+articulatory, and phonemic features; language modeling 
+based on dynamic analysis of the motor content in the 
+verbs produced during the retelling; and fusion of speech 
+and language representations. The proposed approach was 
+evaluated in four binary classification tasks: 
+(a) PD patients and HCs, (b) PD-MCI and HCs, (c) PD-nMCI and HCs, and (d) PD-MCI and PD-nMCI. 
+
+
+
+\begin{figure*}[ht]
+    \centering    \includegraphics[width=0.8\linewidth]{figures/methodology.png}
+    \caption{Proposed methodology.}
+    \label{fig:methodology}
+\end{figure*}
+
+\subsection{Speech Modeling} \label{subsec:speech}
+
+We extracted three sets of acoustic features following the 
+methodology proposed in~\cite{garcia2021cognitive}. 
+These features are designed to capture the distinct 
+manifestations of hypokinetic dysarthria, which affects 
+precision of articulation, prosodic variability, and 
+phonemic identifiability. 
+These features were extracted using the Disvoice\footnote{https://github.com/jcvasquezc/DisVoice} Toolkit introduced by GITA Lab years ago.
+
+\begin{itemize}
+    \item \textbf{Articulation:} These features aim to capture deficits in speech motor control that affect the clarity and sharpness of phoneme transitions. These features are computed around voiced-unvoiced boundaries and include Bark-scale spectral energies and MFCCs extracted from fixed-size windows centered on transition points. Such features reflect articulatory undershoot and reduced precision, which are common in PD~\cite{orozco2018neurospeech,vasquez2018towards}.
+
+    \item \textbf{Prosody:} These features describe the suprasegmental characteristics of speech, including pitch variation, jitter, shimmer, speech rate, and pause duration. These features quantify the rhythmic and melodic aspects of speech, which are commonly affected in PD due to reduced respiratory and laryngeal control~\cite{dehak2007modeling,vasquez2018towards}.
+
+    \item \textbf{Phonemic indetifiability:} This feature set assess the precision of phonological classes to be pronounced
+     in the acoustic signal. They are computed using a Gated 
+     Recurrent Unit (GRU) architecture trained on speech from 
+     healthy Latin American Spanish speakers. 
+     The model generates posterior probabilities for 18 
+     predefined phonological classes over time. 
+     The core assumption is that individuals with PD 
+     exhibit lower confidence scores or incorrect predictions, 
+     in contrast to HCs which tend to produce clearer and more 
+     identifiable phonological targets~\cite{vasquez2019phonet}. 
+\end{itemize}
+
+\subsection{Motor Content Modeling} \label{subsec:lenguage}
+
+First we applied part-of-speech tagging to each transliteration
+to extract all verbs, which were then lemmatized. 
+Each verb is mapped to a normalized motor content score 
+using a reference database composed of 4,565 Spanish
+verbs~\cite{san2020motor}, where a motility score was 
+assigned to each verb to indicate the degree of motor 
+content. We applied min-max normalization to standardize the 
+scores in the reference dataset. 
+Only verbs of the transliteration found in the reference database
+were retained, resulting in a subject-specific motor-content
+vector. From this motor content we extracted 46 
+linguistic features, which can be grouped into three categories:
+(i) Motor content distribution, (ii) dynamic structure, and (iii) segmented motor patterns. 
+
+\begin{itemize}
+    \item \textbf{Motor content distribution:} This feature 
+    set aims to capture the overall distribution of motor 
+    content across the retelling. Nine statistical descriptors
+    are computed over the raw motor content vector: 
+    mean, standard deviation, maximum, minimum, skewness, kurtosis, inter quartile range, number of peaks, and number of valleys, as well as the length of the vector and the slope of a first-degree polynomial fit. 
+
+    \item \textbf{Dynamic structure:} This set aims to model 
+    how motor content changes over time, including fluctuations, transitions, and irregularities. We computed an entropy 
+    vector using a sliding window of three verbs with a step size of one verb. For each window, we calculated the Shannon 
+    entropy of the motility values, resulting in a new time 
+    series that captures short-term information content of the motility dynamics. We then extracted the same nine statistical 
+    functionals mentioned above. In addition, we computed the 
+    first and second derivatives of the original motor 
+    content vector and extracted the nine functionals from each time series.
+
+    \item  \textbf{Motor content segmentation:} In this 
+    feature subgroup we defined motility blocks as sequences 
+    of consecutive verbs with a motility score greater 
+    than 0.75. From these blocks, we computed eight features, 
+    including the number of blocks, average block size, 
+    the position of the blocks with highest and lowest motility,
+    motility of the first, central, and last verbs, 
+    and the difference between the first and last motility values. 
+    
+    A summary of all features is presented in Table~\ref{tab:motility_features}.
+\end{itemize}
+\begin{table}[ht]
+\centering
+\caption{Features extracted from the motor content vector.}
+\label{tab:motility_features}
+    \resizebox{\linewidth}{!}{
+        \begin{tabular}{llc}
+        \toprule
+        \textbf{Category} & \textbf{Feature description} & \textbf{Count} \\
+        \midrule
+        \multirow{3}{*}{Motor content distribution} 
+         & 9 statistics over raw motor content vector & 9 \\
+         & Length of motor vector & 1 \\
+         & Slope of 1st-degree polynomial fit & 1 \\
+        \midrule
+        \multirow{3}{*}{Dynamic structure}
+         & 9 statistics over sliding-window entropy vector & 9 \\
+         & 9 statistics over first derivative & 9 \\
+         & 9 statistics over second derivative & 9 \\
+        \midrule
+        \multirow{2}{*}{Motor content segmentation} 
+        & Number of high-motility blocks, average block size & 2 \\
+        & Position of max/min block, initial/central/final motility, edge difference & 6 \\
+        \midrule
+        \textbf{Total} &  & \textbf{46} \\
+        \bottomrule
+        \end{tabular}
+    }
+\end{table}
+
+\subsection{Bimodal analysis}
+
+We combined the representations from each modality using a 
+late fusion strategy, similar to the one used 
+in~\cite{escobar2023deep}. In this fusion strategy, 
+the classification scores from the individual speech and 
+language models are used as inputs to a second-level 
+classifier, which performs the final bimodal classification.
+
+
+
+\section{Experiments and results}
+
+This section presents the experiments and results obtained
+in the four binary classification scenarios considered in this
+paper.
+For each experiment, HC participants were matched with the 
+corresponding PD patients subgroup to maintain demographic 
+and clinical balance\footnote{One participant classified as 
+HC-nMCI was excluded due to a missing recording.}.
+%
+We used an SVM with a radial basis function (RBF) and a 
+linear kernel for classification. 
+The regularization parameter $C$ and kernel width $\gamma$ were 
+tuned in a two-stage process. First, a coarse grid search 
+was conducted over $C \in \{0.001, 0.01, .., 100\}$ and 
+$\gamma \in \{0.0001, 0.001, ..., 100\}$ to identify a 
+candidate region of the hyperparameter space. 
+Then, a randomized search was performed within this region, 
+using exponentially scaled distributions to improve 
+generalization while mitigating overfitting.
+
+Figure~\ref{fig:ROC_speech} shows the ROC curves and corresponding AUCs using the speech representation described in
+Section~\ref{subsec:speech}. As expected, in the experiment between 
+PD patients (with mixed cognitive profiles) and HCs, the
+combination of all speech dimensions yielded the highest 
+AUC (0.79), mainly driven by articulatory features (AUC = 0.79). 
+In the HC vs PD-MCI scenario, the phonemic identifiability representation achieved the best performance with an 
+AUC of 0.95 followed by the combination of all features 
+with an AUC of 0.89. For the PD-nMCI vs. HC classification, 
+the combination of all speech dimensions achieved an AUC of 0.69, mainly driven by articulatory and phonological features. 
+Finally, in the PD-nMCI vs. PD-MCI scenario, articulation 
+features achieved the best results, slightly outperforming the phonological representation and the representation base on the combination of all dimensions. 
+
+These results align with the findings reported in~\cite{garcia2021cognitive}, which showed that the 
+retelling task yielded better performance in cognitively 
+focused comparisons, such as PD-MCI vs. HC and PD-nMCI vs. PD-MCI, 
+while the reading task performed better in broader motor 
+speech comparisons such as PD vs. HC and HC vs. PD-MCI. 
+This pattern reinforces the notion that retelling tasks 
+are more effective in capturing cognitive-linguistic 
+impairments due to their demands on memory, language 
+organization, and spontaneous verbal expression. 
+In contrast, reading tasks are more sensitive to motor speech
+alterations through their structured and repetitive nature. 
+Our results further confirm that articulatory features 
+consistently contribute to the best performance in scenarios
+involving patients with cognitively intact or mixed profile 
+PD patients, supporting their reliability as robust markers 
+of dysarthric speech. In contrast, phonemic identifiability 
+features, a subset of phonological features, emerge as good
+biomarkers in tasks involving cognitive 
+impairment, suggesting that changes in speech production and
+planning are strong indicators of cognitive decline in PD. 
+In particular, in the cognitively nuanced comparison of 
+PD-nMCI vs. PD-MCI, both articulatory and phonological 
+features were found to be the most effective, underscoring 
+their combined value in capturing the intersection of motor 
+and cognitive symptoms during disease progression.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{figures/ROC_speech.pdf}
+    \caption{ROC curves comparing different feature sets for four classification tasks: 
+    (a) PD vs. HC, 
+    (b) PD-MCI vs. HC, 
+    (c) PD-nMCI vs. HC, 
+    (d) PD-nMCI vs. PD-MCI. 
+    Each curve includes its corresponding AUC in the legend.}
+    \label{fig:ROC_speech}
+\end{figure}
+
+\begin{table}[]
+\caption{Classification between PD patients vs. HC subjects for the uni-modal and multimodal approaches.}
+\resizebox{1\linewidth}{!}{
+\begin{tabular}{lccccc}
+\hline
+ \textbf{Modality}                       & \textbf{Accuracy} & \textbf{Sensitivity} & \textbf{Specificity} & \textbf{F1-score}  \\ \hline
+\multicolumn{5}{c}{\textbf{PD vs. HC}}                                                                                \\ \hline
+Speech(all dim)                 & 74.7              & 67.5                 & 82.1                 & 73.0              \\
+Language                        & 59.5              & 60.0                 & 59.3                 & 60.0              \\
+Fusion(all dim + language)      & 65.8              & 67.5                 & 64.1                 & 66.7              \\ \hline
+\multicolumn{5}{c}{\textbf{PD-MCI vs. HC}}                                                                            \\ \hline
+Speech(Phonological)            & 87.5              & 81.2                 & 93.8                 & 86.7              \\
+Language                        & 75.0              & 75.0                 & 75.0                 & 75.0              \\
+Fusion                          & 90.6              & 87.8                 & 93.8                 & 90.3               \\ \hline
+\multicolumn{5}{c}{\textbf{PD-nMCI vs. HC}}                                                                            \\ \hline
+Speech(Articulation)            & 70.2              & 62.5                 & 78.3                 & 68.2               \\
+Language                        & 59.6              & 58.3                 & 60.9                 & 59.6                \\
+Fusion(all dim + language)      & 66.0              & 70.8                 & 60.9                 & 68.0                \\ \hline
+\multicolumn{5}{c}{\textbf{PD-nMCI vs PD-MCI}}                                                                          \\ \hline
+Speech(Phonological)            & 72.5              & 50.0                 & 87.5                 & 59.3                \\
+Language                        & 70.0              & 62.5                 & 75.0                 & 66.7                \\
+Fusion(all dim + language)      & 75.0              & 68.8                 & 79.2                 & 68.8                \\ \hline
+\end{tabular}
+}
+\label{tab:tab_PD_HC}
+\scriptsize{\textbf{All dim}: the speech representation obtained concatenating prosody, articulation, and phonological features.}
+\end{table}
+
+Table~\ref{tab:tab_PD_HC} show the best classification results
+obtained for each modality independently and for the 
+bimodal approach based on late fusion. 
+The language modality corresponds to the representation 
+based on the dynamic analysis of verb-related motor 
+content. The biomodal approach consists in combining 
+each acoustic representation with the language representation. 
+For each modality, we only report the best result according to accuracy.
+
+These results show a limited performance of the language 
+modality in the classification scenario that involves
+cognitively heterogeneous patients or in experiments that 
+do not involve PD patients with cognitive impairment. 
+Conversely, classification scenarios involving PD 
+patients with cognitive impairment show acceptable results
+with the language modality. 
+An accuracy of 75\% is obtained in the PD-MCI vs. HC scenario.
+Although this is lower than the accuracy obtained using 
+acoustic features (phonological), the language-based 
+representation provided a more balanced sensitivity 
+and specificity. In the PD-nMCI vs. PD-MCI classification, 
+the language modality outperformed the sensitivity obtained with speech, leading to a higher F1-score.
+
+Results from the language modality contrast with findings from
+previous studies, where features based on the production 
+of motor-related verbs were primarily associated with 
+PD related linguistic impairment rather than cognitive 
+decline. In our case, the dynamic analysis of verb motor 
+content does not appear to capture the linguistic 
+deterioration typically associated with PD. 
+However, our language representation shows promising patterns 
+as a biomarker of cognitive impairments. We hypothesize that features such as the variability of motor content and the transitions in motor content throughout the narrative reflect lexical richness and the subject's ability to vary or sustain motor-semantic information, which we expect to be cognitive-linguistic functions more sensitive to cognitive decline than linguistic impairments associated with PD.
+
+
+Finally, the bimodal approach showed a improved performance 
+in the PD-MCI vs. HC and PD-nMCI vs. PD-MCI classification tasks. 
+The first scenario yielded accuracies of up to 90\%, 
+with a more balanced trade-off between sensitivity 
+and specificity. To the best of our knowledge, this 
+represents the highest reported performance for this 
+classification scenario using this dataset. 
+A similar behavior was observed in the PD-nMCI vs. PD-MCI task,
+where accuracy improved and a better balance between sensitivity and specificity was observed.
+
+%Aca no se si podria ir un grafico de distribución donde se muestre la mejora del enfoque bimodal. NO se si tenemos espacio
+
+
+
+
+\begin{comment}
+    
+
+\begin{table}[ht]
+\centering
+\caption{Classification results across different tasks. All values are reported as percentages.}
+\label{tab:speech_results}
+\begin{tabular}{lcccc}
+\hline
+\multicolumn{1}{c}{} & \textbf{Accuracy} & \textbf{Sensitivity} & \textbf{Specificity} & \textbf{F1-score} \\ \hline
+\multicolumn{5}{c}{\textbf{PD vs. HC}}          \\ \hline
+Articulation    & 70.9  & 72.5  & 69.2   & 71.6 \\
+Prosody         & 63.3  & 60.0  & 66.7   & 62.3 \\
+Phonological    & 70.9  & 72.5  & 69.2   & 71.6 \\
+Early fusion    & 74.7  & 67.5  & 82.1   & 73.0 \\
+Late fusion     & 69.6  & 75.0  & 64.1   & 71.4 \\ \hline
+\multicolumn{5}{c}{\textbf{PD-MCI vs. HC}}      \\ \hline
+Articulation    & 75.0  & 75.0  & 75.0   & 75.0 \\
+Prosody         & 71.9  & 68.8  & 75.0   & 71.0 \\
+Phonological    & 87.5  & 81.2  & 93.8   & 86.7 \\
+Early fusion    & 81.3  & 81.3  & 81.3   & 81.3 \\
+Late fusion     & 84.4  & 87.5  & 81.2   & 84.8 \\ \hline
+\multicolumn{5}{c}{\textbf{PD-nMCI vs. HC}}     \\ \hline
+Articulation    & 70.2  & 62.5  & 78.3   & 68.2 \\
+Prosody         & 59.6  & 62.5  & 56.5   & 61.2 \\
+Phonological    & 66.0  & 62.5  & 69.6   & 65.2 \\
+Early fusion    & 68.1  & 62.5  & 73.9   & 66.7 \\
+Late fusion     & 68.1  & 66.7  & 69.6   & 68.1 \\ \hline
+\multicolumn{5}{c}{\textbf{PD-MCI vs. PD-nMCI}} \\ \hline
+Articulation    & 70.0  & 43.8  & 87.5   & 53.9 \\
+Prosody         & 60.0  & 0.0   & 100.0  & 0.0  \\
+Phonological    & 72.5  & 50.0  & 87.5   & 59.3 \\
+Early fusion    & 70.0  & 43.8  & 87.5   & 53.9 \\
+Late fusion     & 67.5  & 56.2  & 75.0   & 58.1 \\ \hline
+\end{tabular}
+\end{table}
+\end{comment}
+
+
+\section{Discussion and conclusions}
+
+This work demonstrates the effectiveness of using retelling 
+speech tasks to detect cognitive decline in PD patients. 
+Acoustic features improve sensitivity, while language features,
+particularly those capturing motility dynamics, enhance 
+specificity. Fusion strategies strengthen overall classification,
+highlighting the potential of combining speech and language in
+naturalistic tasks for early, non-invasive screening of
+neurodegenerative conditions.
+
+Our novel motility-based language feature, derived from 
+action-oriented verbs in the retelling task, 
+improved classification in cognitively focused tasks, 
+especially distinguishing PD-MCI from PD-nMCI. 
+These results suggest that cognitive impairment in PD alters 
+not only speech but also language structure, particularly in 
+the use of action-related verbs.
+
+Although language modeling alone was less effective for PD detection, it improved specificity in combination with 
+speech. Early fusion improved general PD detection, 
+while late fusion highlighted fine-grained cognitive
+classifications. The combination of speech and language 
+provides a more robust representation, capturing both 
+motor and cognitive linguistic dimensions of PD and MCI.
+
+
+\section{Acknowledgements}
+This work was funded by UdeA grant \# PI2023-58010 and IAPFI23-1-01.
+
+
+    
+
+
+%
+% ---- Bibliography ----
+%
+% BibTeX users should specify bibliography style 'splncs04'.
+% References will then be sorted and formatted in the correct style.
+%
+\bibliographystyle{splncs04}
+\bibliography{bibliography}
+%
+\end{document}
